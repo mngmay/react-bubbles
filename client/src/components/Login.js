@@ -49,6 +49,7 @@ const Login = props => {
         />
         <button>Login</button>
       </form>
+      {loading && <div>Loading...</div>}
     </>
   );
 };

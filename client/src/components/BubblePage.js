@@ -32,6 +32,7 @@ const BubblePage = () => {
     <>
       <ColorList colors={colorList} updateColors={setColorList} />
       <Bubbles colors={colorList} />
+      {loading && <div>Loading...</div>}
     </>
   );
 };
