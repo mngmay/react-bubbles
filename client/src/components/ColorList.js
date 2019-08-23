@@ -49,6 +49,17 @@ const ColorList = ({ colors, updateColors }) => {
       .catch(err => console.log(err));
   };
 
+  const addColor = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post("http://localhost:5000/api/colors", newColor)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err.response));
+    setNewColor(initialColor);
+  };
+
   return (
     <div className="colors-wrap">
       <p>colors</p>
@@ -101,7 +112,7 @@ const ColorList = ({ colors, updateColors }) => {
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
       <h1>Add A New Color</h1>
-      <form>
+      <form onSubmit={addColor}>
         <input
           type="text"
           name="color"
@@ -126,6 +137,7 @@ const ColorList = ({ colors, updateColors }) => {
             })
           }
         />
+        <button>Add New Color</button>
       </form>
     </div>
   );
