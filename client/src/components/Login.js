@@ -11,7 +11,7 @@ const Login = props => {
   const [loading, setLoading] = useState(false);
 
   const handleChange = e => {
-    setCredentials({ ...credentials, [e.target.name]: e.targert.value });
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const login = e => {
