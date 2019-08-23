@@ -9,6 +9,7 @@ const BubblePage = () => {
   const [loading, setLoading] = useState(false);
   // fetch your colors data from the server when the component mounts
   // set that data to the colorList state property
+  console.log("bubble page", colorList);
 
   useEffect(() => {
     getColors();
