@@ -16,8 +16,6 @@ const ColorList = ({ colors, updateColors }) => {
     setColorToEdit(color);
   };
 
-  console.log("newColor", newColor);
-
   const saveEdit = e => {
     e.preventDefault();
     // Make a put request to save your updated color
@@ -55,6 +53,7 @@ const ColorList = ({ colors, updateColors }) => {
       .post("http://localhost:5000/api/colors", newColor)
       .then(res => {
         console.log(res);
+        updateColors(res.data);
       })
       .catch(err => console.log(err.response));
     setNewColor(initialColor);
