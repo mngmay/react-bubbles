@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialColor = {
@@ -9,11 +9,14 @@ const initialColor = {
 const ColorList = ({ colors, updateColors }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const [newColor, setNewColor] = useState(initialColor);
 
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
   };
+
+  console.log("newColor", newColor);
 
   const saveEdit = e => {
     e.preventDefault();
@@ -97,6 +100,33 @@ const ColorList = ({ colors, updateColors }) => {
       )}
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      <h1>Add A New Color</h1>
+      <form>
+        <input
+          type="text"
+          name="color"
+          placeholder="Color Name"
+          value={newColor.color}
+          onChange={e =>
+            setNewColor({
+              ...newColor,
+              color: e.target.value
+            })
+          }
+        />
+        <input
+          type="text"
+          name="hex"
+          placeholder="Hex Code"
+          value={newColor.code.hex}
+          onChange={e =>
+            setNewColor({
+              ...newColor,
+              code: { hex: e.target.value }
+            })
+          }
+        />
+      </form>
     </div>
   );
 };
